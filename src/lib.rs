@@ -5,6 +5,8 @@ mod services;
 
 use components::login::Login;
 use components::chat::Chat;
+use components::about::About;
+use components::profile::Profile;
 
 use wasm_bindgen::prelude::*;
 use yew::functional::*;
@@ -20,6 +22,10 @@ pub enum Route {
     Login,
     #[at("/chat")]
     Chat,
+    #[at("/about")]
+    About,
+    #[at("/profile")]
+    Profile,
     #[not_found]
     #[at("/404")]
     NotFound,
@@ -29,7 +35,9 @@ fn switch(selected_route: &Route) -> Html {
     match selected_route {
         Route::Login => html! {<Login />},
         Route::Chat => html! {<Chat/>},
-        Route::NotFound => html! {<h1>{"404 baby"}</h1>},
+        Route::About => html! {<About/>},
+        Route::Profile => html! {<Profile/>},
+        Route::NotFound => html! {<h1>{"404 - Page Not Found 🤔"}</h1>},
     }
 }
 
